@@ -1,9 +1,10 @@
 {
   "name": "storybook-addon-validate-html",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Runs your component html markup through w3c/nu and reports the validation messages",
   "keywords": [
-    "html validate component", "storybook-addons"
+    "html validate component",
+    "storybook-addons"
   ],
   "repository": {
     "type": "git",
@@ -45,15 +46,18 @@
     "@babel/preset-typescript": "^7.13.0",
     "@storybook/addon-essentials": "^6.4.0",
     "@storybook/react": "^6.4.0",
+    "@types/prettier": "^2.6.1",
+    "@types/react-syntax-highlighter": "^15.5.1",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
     "boxen": "^5.0.1",
     "concurrently": "^6.2.0",
     "dedent": "^0.7.0",
-    "prettier": "^2.3.1",
+    "prettier": "^2.6.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-syntax-highlighter": "^15.5.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.2.4",
     "zx": "^1.14.1"

@@ -1,36 +1,28 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useAddonState, useChannel } from "@storybook/api";
 import { AddonPanel } from "@storybook/components";
-import { ADDON_ID, EVENTS } from "./constants";
-import { PanelContent } from "./components/PanelContent";
+import { ADDON_ID, EVENT_CODE_RECEIVED } from "./constants";
+import { ValidationPanel } from "./components/ValidationPanel";
 
 interface PanelProps {
   active: boolean;
 }
 
 export const Panel: React.FC<PanelProps> = (props) => {
-  // https://storybook.js.org/docs/react/addons/addons-api#useaddonstate
-  const [results, setState] = useAddonState(ADDON_ID, {
-    danger: [],
-    warning: [],
-  });
-
-  // https://storybook.js.org/docs/react/addons/addons-api#usechannel
-  const emit = useChannel({
-    [EVENTS.RESULT]: (newResults) => setState(newResults),
+  
+  const [html, setHtml] = useAddonState(ADDON_ID, '');
+  
+  useChannel({
+    [EVENT_CODE_RECEIVED]: ({ html }) => {
+      setHtml(html);
+      // setHtml("<div>lorem ipsum</span>");
+    },
   });
 
   return (
     <AddonPanel {...props}>
-      <PanelContent
-        results={results}
-        fetchData={() => {
-          emit(EVENTS.REQUEST);
-        }}
-        clearData={() => {
-          emit(EVENTS.CLEAR);
-        }}
-      />
+      <ValidationPanel html={html} />
     </AddonPanel>
   );
 };
+
