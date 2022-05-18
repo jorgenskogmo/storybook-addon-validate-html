@@ -121,7 +121,7 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
 
   useEffect( () => {
     async function fetchData() {
-      console.log('checking...', source)
+      // console.log('checking...', source)
       setMessage('Validating...')
       setResultHtml('')
 
@@ -170,8 +170,8 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
 
     const html = htmlLines.join("\n").trim()
 
-    console.log( 'r1', htmlLines )
-    console.log( 'r2', html )
+    // console.log( 'r1', htmlLines )
+    // console.log( 'r2', html )
 
     return html;
   }
