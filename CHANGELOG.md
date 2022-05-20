@@ -1,3 +1,16 @@
+# v0.0.7 (Fri May 20 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/jorgenskogmo/storybook-addon-validate-html ([@jorgenskogmo](https://github.com/jorgenskogmo))
+- feat: delay 1 sec before validating ([@jorgenskogmo](https://github.com/jorgenskogmo))
+
+#### Authors: 1
+
+- Jørgen Skogmo ([@jorgenskogmo](https://github.com/jorgenskogmo))
+
+---
+
 # v0.0.6 (Fri May 20 2022)
 
 #### ⚠️ Pushed to `main`
