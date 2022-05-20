@@ -6,7 +6,7 @@ import {theme} from '../theme-docco';
 import { format as prettierFormat } from 'prettier/standalone';
 import prettierHtml from 'prettier/parser-html';
 
-console.log(theme)
+// console.log(theme)
 
 const HTMLHEAD = (compname:string) => `<!DOCTYPE html>
 <html lang="en">
