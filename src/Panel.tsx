@@ -9,19 +9,22 @@ interface PanelProps {
 }
 
 export const Panel: React.FC<PanelProps> = (props) => {
-  
+  const {active} = props;
   const [html, setHtml] = useAddonState(ADDON_ID, '');
   
   useChannel({
-    [EVENT_CODE_RECEIVED]: ({ html }) => {
-      setHtml(html);
-      // setHtml("<div>lorem ipsum</span>");
+    [EVENT_CODE_RECEIVED]: ({ html, ...rest }) => {
+      // console.log('Panel EVENT_CODE_RECEIVED', active, html)
+      if( active ){
+        setHtml(html);
+        // setHtml("<div>lorem ipsum</span>");
+      }
     },
   });
 
   return (
     <AddonPanel {...props}>
-      <ValidationPanel html={html} />
+      <ValidationPanel html={html} active={active} />
     </AddonPanel>
   );
 };

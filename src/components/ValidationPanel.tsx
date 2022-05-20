@@ -29,10 +29,10 @@ themeFull['hljs'] = {
   background: '#f7f6f6',
 }
 
-const HTMLHEAD = `<!DOCTYPE html>
+const HTMLHEAD = (compname:string) => `<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>component</title>
+    <title>${compname}</title>
   </head>
   <body>
 `;
@@ -66,6 +66,7 @@ const prettierConfig = {
 export type ValidationPanelProps = {
   html?: string,
   wrap?: boolean,
+  active?: boolean;
 }
 
 type messageType = {
@@ -109,11 +110,16 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
   const {
     html: htmlProp = "<div>lorem ipsum</span>",
     wrap: wrapProp = true,
+    active: activeProp = false,
   } = props;
 
-  // console.log('ValidationPanel props', props)
+  if( !activeProp || htmlProp === ''){
+    return (<></>)
+  }
 
-  const source = wrapProp ? `${HTMLHEAD}${htmlProp}${HTMLFOOT}` : htmlProp;
+
+  const compname: string = (window.location.search || window.location.href).split('/story/').pop();
+  const source = wrapProp ? `${HTMLHEAD(compname)}${htmlProp}${HTMLFOOT}` : htmlProp;
 
   const [resultHtml, setResultHtml] = useState<string>('');
   const [message, setMessage] = useState<string>('');
@@ -133,8 +139,6 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
       setResultHtml( formatResults(formattedSource, results) );
     }
 
-    // console.log( source, prevSource, (source === prevSource) )
-
     setPrevSource(source);
 
     if(source !== prevSource){
@@ -143,7 +147,7 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
   }, [source]);
 
   const formatResults = (source:string, results:resultType) => {
-    // console.log('validator results:', results)
+    console.log('validator results:', results)
 
     const linesOffset = 1;
     const unwrapped = source;
