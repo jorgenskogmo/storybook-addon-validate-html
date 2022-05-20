@@ -142,7 +142,13 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
     setPrevSource(source);
 
     if(source !== prevSource){
-      fetchData();
+      // wait a bit, so the DOM can populate <Portal>'s and the likes
+      setTimeout(() => {
+        if (activeProp && htmlProp !== '' ){
+          fetchData();
+        }
+      }, 1000);
+      // fetchData();
     }
   }, [source]);
 
