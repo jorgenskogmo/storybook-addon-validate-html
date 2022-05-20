@@ -164,7 +164,7 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
     const messages = results.messages?.sort(sortResults);
 
     const numErrors = messages?.length || 0;
-    setMessage(`Found ${numErrors} validation errors`);
+    setMessage(`Found ${numErrors} validation issues`);
 
     let htmlLines = [''];
     sourceLines.forEach( (line, index) => {
@@ -172,7 +172,7 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
 
       messages?.forEach( (msg:messageType) => {
         const messageLine = msg.lastLine ?  msg.lastLine - linesOffset : -1;
-        if( msg.type === 'error' && messageLine === index ){
+        if( messageLine === index ){
           htmlLines.push(`<!-- ${msg.type}: ${cleanMessage(msg.message || '')} -->`);
         }
       });
