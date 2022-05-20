@@ -1,3 +1,15 @@
+# v0.0.5 (Wed May 18 2022)
+
+#### ⚠️ Pushed to `main`
+
+- less log ([@jorgenskogmo](https://github.com/jorgenskogmo))
+
+#### Authors: 1
+
+- Jørgen Skogmo ([@jorgenskogmo](https://github.com/jorgenskogmo))
+
+---
+
 # v0.0.4 (Tue May 17 2022)
 
 #### ⚠️ Pushed to `main`
