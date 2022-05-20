@@ -2,32 +2,11 @@
 import React, {useState, useEffect} from "react";
 import { useAddonState } from "@storybook/api";
 import ReactSyntaxHighlighter from 'react-syntax-highlighter';
-import { docco as theme } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import {theme} from '../theme-docco';
 import { format as prettierFormat } from 'prettier/standalone';
 import prettierHtml from 'prettier/parser-html';
 
-// console.log(theme)
-
-theme['hljs'] = {
-  fontSize: '0.75rem',
-  lineHeight: '1rem',
-  'width': 'calc(100% - 20px)',
-  'marginLeft': '10px',
-  overflow: 'auto',
-}
-
-theme['hljs-comment'] = {
-  color: 'rgb(163 0 0)',
-  background: 'rgb(255 240 227)',
-  padding: '2px 0px',
-}
-
-const themeFull = JSON.parse(JSON.stringify(theme));
-
-themeFull['hljs'] = {
-  ...themeFull['hljs'],
-  background: '#f7f6f6',
-}
+console.log(theme)
 
 const HTMLHEAD = (compname:string) => `<!DOCTYPE html>
 <html lang="en">
@@ -42,18 +21,9 @@ const HTMLFOOT = `
 
 const FETCH_CONFIG = {
   method: 'POST',
-  // mode: 'cors', // no-cors, *cors, same-origin
-  // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-  // credentials: 'same-origin', // include, *same-origin, omit
   headers: {
-    // 'Content-Type': 'application/json'
-    // 'Content-Type': 'application/x-www-form-urlencoded',
     'Content-Type': 'text/html; charset=utf-8',
   },
-  // redirect: 'follow', // manual, *follow, error
-  // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-  // body: JSON.stringify(data) // body data type must match "Content-Type" header
-  // body: str
 };
 
 
@@ -100,8 +70,8 @@ const sortResults = (a: messageType, b: messageType): number => {
 const cleanMessage = (msg: string) => {
   if( !msg ) return msg;
   return msg
-    .replace('”', '"')
-    .replace('“', '"')
+    .replace(/”/g, '"')
+    .replace(/“/g, '"')
     // .slice(0, -1)
 }
 
@@ -192,7 +162,7 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
         {message}
       </ReactSyntaxHighlighter>
 
-      <ReactSyntaxHighlighter style={themeFull}>
+      <ReactSyntaxHighlighter style={theme}>
         {resultHtml}
       </ReactSyntaxHighlighter>
     </div>
