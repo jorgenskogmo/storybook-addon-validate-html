@@ -46,8 +46,7 @@
     "@babel/preset-typescript": "^7.13.0",
     "@storybook/addon-essentials": "^6.4.0",
     "@storybook/react": "^6.4.0",
-    "@types/prettier": "^2.6.1",
-    "@types/react-syntax-highlighter": "^15.5.1",
+    
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
     "boxen": "^5.0.1",
@@ -57,7 +56,6 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-syntax-highlighter": "^15.5.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.2.4",
     "zx": "^1.14.1"

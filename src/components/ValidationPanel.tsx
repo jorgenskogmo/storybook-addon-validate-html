@@ -1,12 +1,6 @@
-
 import React, {useState, useEffect} from "react";
 import { useAddonState } from "@storybook/api";
-import ReactSyntaxHighlighter from 'react-syntax-highlighter';
-import {theme} from '../theme-docco';
-import { format as prettierFormat } from 'prettier/standalone';
-import prettierHtml from 'prettier/parser-html';
-
-// console.log(theme)
+import { SyntaxHighlighter } from '@storybook/components';
 
 const HTMLHEAD = (compname:string) => `<!DOCTYPE html>
 <html lang="en">
@@ -24,13 +18,6 @@ const FETCH_CONFIG = {
   headers: {
     'Content-Type': 'text/html; charset=utf-8',
   },
-};
-
-
-const prettierConfig = {
-  // htmlWhitespaceSensitivity: "ignore",
-  parser: 'html',
-  plugins: [prettierHtml],
 };
 
 export type ValidationPanelProps = {
@@ -72,7 +59,6 @@ const cleanMessage = (msg: string) => {
   return msg
     .replace(/”/g, '"')
     .replace(/“/g, '"')
-    // .slice(0, -1)
 }
 
 export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
@@ -87,7 +73,6 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
     return (<></>)
   }
 
-
   const compname: string = (window.location.search || window.location.href).split('/story/').pop();
   const source = wrapProp ? `${HTMLHEAD(compname)}${htmlProp}${HTMLFOOT}` : htmlProp;
 
@@ -101,12 +86,9 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
       setMessage('Validating...')
       setResultHtml('')
 
-
-      const formattedSource = prettierFormat(source, prettierConfig);
-
-      const op = await fetch(`https://validator.w3.org/nu/?out=json`, {...FETCH_CONFIG, body: formattedSource});
+      const op = await fetch(`https://validator.w3.org/nu/?out=json`, {...FETCH_CONFIG, body: source});
       const results = await op.json();
-      setResultHtml( formatResults(formattedSource, results) );
+      setResultHtml( formatResults(source, results) );
     }
 
     setPrevSource(source);
@@ -118,7 +100,6 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
           fetchData();
         }
       }, 1000);
-      // fetchData();
     }
   }, [source]);
 
@@ -126,11 +107,7 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
     console.log('validator results:', results)
 
     const linesOffset = 1;
-    const unwrapped = source;
-    // const linesOffset = HTMLHEAD.split("\n").length;
-    // const unwrapped = source.replace(HTMLHEAD, '').replace(HTMLFOOT, '');
-    
-    const sourceLines = unwrapped.split("\n");
+    const sourceLines = source.split("\n");
     const messages = results.messages?.sort(sortResults);
 
     const numErrors = messages?.length || 0;
@@ -148,23 +125,18 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
       });
     });
 
-    const html = htmlLines.join("\n").trim()
-
-    // console.log( 'r1', htmlLines )
-    // console.log( 'r2', html )
-
-    return html;
+    return htmlLines.join("\n").trim();
   }
 
   return (
     <div>
-      <ReactSyntaxHighlighter style={theme}>
+      <SyntaxHighlighter>
         {message}
-      </ReactSyntaxHighlighter>
-
-      <ReactSyntaxHighlighter style={theme}>
+      </SyntaxHighlighter>
+      <br />
+      <SyntaxHighlighter language="html">
         {resultHtml}
-      </ReactSyntaxHighlighter>
+      </SyntaxHighlighter>
     </div>
   )
 };
