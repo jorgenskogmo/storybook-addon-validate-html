@@ -1,3 +1,16 @@
+# v0.0.11 (Tue May 24 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/jorgenskogmo/storybook-addon-validate-html ([@jorgenskogmo](https://github.com/jorgenskogmo))
+- fix: remove prettier and reactsyntaxhiliter ([@jorgenskogmo](https://github.com/jorgenskogmo))
+
+#### Authors: 1
+
+- Jørgen Skogmo ([@jorgenskogmo](https://github.com/jorgenskogmo))
+
+---
+
 # v0.0.10 (Fri May 20 2022)
 
 #### ⚠️ Pushed to `main`
