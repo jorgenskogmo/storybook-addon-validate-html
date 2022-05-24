@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-validate-html",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Runs your component html markup through w3c/nu and reports the validation messages",
   "keywords": [
     "html validate component",
@@ -46,7 +46,6 @@
     "@babel/preset-typescript": "^7.13.0",
     "@storybook/addon-essentials": "^6.4.0",
     "@storybook/react": "^6.4.0",
-    
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
     "boxen": "^5.0.1",
