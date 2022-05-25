@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-validate-html",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Runs your component html markup through w3c/nu and reports the validation messages",
   "keywords": [
     "html validate component",
