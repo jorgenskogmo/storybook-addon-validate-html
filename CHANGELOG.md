@@ -1,3 +1,16 @@
+# v0.0.12 (Wed May 25 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/jorgenskogmo/storybook-addon-validate-html ([@jorgenskogmo](https://github.com/jorgenskogmo))
+- added linenumbers ([@jorgenskogmo](https://github.com/jorgenskogmo))
+
+#### Authors: 1
+
+- Jørgen Skogmo ([@jorgenskogmo](https://github.com/jorgenskogmo))
+
+---
+
 # v0.0.11 (Tue May 24 2022)
 
 #### ⚠️ Pushed to `main`
