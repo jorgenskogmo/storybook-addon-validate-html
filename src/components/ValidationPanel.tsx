@@ -130,11 +130,10 @@ export const ValidationPanel: React.FC<ValidationPanelProps> = (props) => {
 
   return (
     <div>
-      <SyntaxHighlighter>
+      <SyntaxHighlighter bordered padded>
         {message}
       </SyntaxHighlighter>
-      <br />
-      <SyntaxHighlighter language="html">
+      <SyntaxHighlighter language="html" padded showLineNumbers>
         {resultHtml}
       </SyntaxHighlighter>
     </div>
